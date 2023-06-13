@@ -1,0 +1,49 @@
+
+/*
+ * <aside>
+💡 **Q2.** Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+
+Consider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:
+
+- Change the array nums such that the first k elements of nums contain the elements which are not equal to val. The remaining elements of nums are not important as well as the size of nums.
+- Return k.
+
+**Example :**
+Input: nums = [3,2,2,3], val = 3
+Output: 2, nums = [2,2,_*,_*]
+
+**Explanation:** Your function should return k = 2, with the first two elements of nums being 2. It does not matter what you leave beyond the returned k (hence they are underscores)[
+
+</aside>
+ * 
+ */
+
+import java.util.Arrays;
+public class QUESTION02 {
+    public int removeElement(int[] nums, int val) {
+        int k = 0; // variable to keep track of the non-val elements
+
+        // Iterate through the array using two pointers
+        for (int i = 0; i < nums.length; i++) {
+            // Check if the current element is not equal to val
+            if (nums[i] != val) {
+                // Move the non-val element to the left side of the array
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+
+        return k;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {3, 2, 2, 3};
+        int val = 3;
+
+        QUESTION02 removeElement = new QUESTION02();
+        int result = removeElement.removeElement(nums, val);
+
+        // Print the result
+        System.out.println("Output: " + result + ", nums = " + Arrays.toString(nums));
+    }
+}
